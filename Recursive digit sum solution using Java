@@ -1,0 +1,31 @@
+//Recursive Digit Sum Problem
+import java.io.*;
+import java.util.*;
+
+public class Main {
+
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        String[] input = sc.nextLine().split(" ");
+        int k = Integer.parseInt(input[1]);
+        long n = 0;
+        for(int i = 0; i < input[0].length(); i++) {
+            int charNum = input[0].charAt(i) - 48;
+            n += charNum;
+        }
+        System.out.println(digitSum(n*k));
+    }
+    
+    public static long digitSum(long n) {
+            if(n <= 9) {
+                return n;
+            }           
+            
+            long sum = 0;
+            while(n > 0) {
+                sum += n % 10;
+                n = n/10;
+            }
+            return digitSum(sum);
+    }
+}
